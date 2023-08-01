@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://biodata.ceitec.cz/datasets/cf-plants.schema.json",
+  "title": "CF Plant Dataset",
+  "description": "A metadata description for datasets producet by the CEITEC's Core Facility Plants.",
+  "type": "object",
+  "properties": {
+    "user": {
+      "title": "User definition",
+      "description": "Definition of user for whom is the experiment conducted",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the user",
+          "type": "string",
+          "title": "User name"
+        },
+        "research_group": {
+          "description": "Name of the user's research group at CEITEC",
+          "type": "string",
+          "title": "Research Group "
+        },
+        "affiliation": {
+          "description": "User's affiliation - determine if the user is from organization within CEITEC, Masaryk University or other academia/commerial organization nationwide or worldwide.",
+          "type": "string",
+          "title": "Affiliation "
+        },
+        "institution": {
+          "description": "Institution of the user",
+          "type": "string",
+          "title": "Institution"
+        },
+        "project": {
+          "description": "User's project",
+          "properties": {
+            "name": {
+              "description": "Project title",
+              "type": "string",
+              "title": "Title"
+            },
+            "number": {
+              "description": "Project identification number",
+              "type": "string",
+              "title": "Identification number"
+            }
+          },
+          "type": "object",
+          "title": "User's project definition"
+        }
+      },
+      "required": [
+        "name",
+        "affiliation"
+      ]
+    },
+    "operator": {
+      "description": "Operator who was responsible for the conducting the experiment and creating the dataset",
+      "properties": {
+        "name": {
+          "description": "Name of the operator",
+          "type": "string",
+          "title": "Operator's name"
+        }
+      },
+      "type": "object",
+      "title": "Operator"
+    },
+    "experiment": {
+      "description": "Information about experiment",
+      "properties": {
+        "name": {
+          "description": "Name of the experiment",
+          "type": "string",
+          "title": "Experiment Name"
+        },
+        "number": {
+          "title": "Experiment Number",
+          "description": "number",
+          "type": "string"
+        },
+        "qr_codes": {
+          "description": "qr_codes",
+          "type": "string",
+          "title": "QR Codes"
+        },
+        "mask": {
+          "description": "Mask",
+          "type": "string",
+          "title": "Mask"
+        },
+        "sowing": {
+          "description": "Date of the sowing an object",
+          "type": "string",
+          "title": "Sowing date"
+        },
+        "start_date": {
+          "description": "Date when experiment starts",
+          "type": "string",
+          "title": "Start of the experiment"
+        },
+        "end_date": {
+          "description": "Date when experiment ends",
+          "type": "string",
+          "title": "End of the experiment"
+        },
+        "first_photo": {
+          "description": "Date of the first photo of an object",
+          "type": "string",
+          "title": "First photo"
+        },
+        "last_photo": {
+          "description": "Date of the last photo of an object",
+          "type": "string",
+          "title": "Last photo"
+        },
+        "number_of_photos": {
+          "description": "Number of photos within dataset",
+          "type": "integer",
+          "title": "Number of photos"
+        }
+      },
+      "type": "object",
+      "title": "Information about experiment"
+    },
+    "growth_conditions": {
+      "description": "Growth conditions part of schema",
+      "properties": {
+        "plant_location": {
+          "description": "Location of plant sample",
+          "required": [
+            "loc_b",
+            "loc_a"
+          ],
+          "properties": {
+            "loc_a": {
+              "description": "Identification of rack",
+              "type": "string",
+              "title": "rack"
+            },
+            "loc_b": {
+              "description": "Identification of unit within the rack",
+              "type": "string",
+              "title": "unit "
+            }
+          },
+          "type": "object",
+          "title": "Plant location"
+        },
+        "day_night_period": {
+          "description": "Day/Night period",
+          "properties": {
+            "day_period": {
+              "description": "Day period defined in hours",
+              "type": "integer",
+              "title": "Day period "
+            },
+            "night_period": {
+              "description": "Night period defined in hours",
+              "type": "integer",
+              "title": "Night period "
+            }
+          },
+          "type": "object",
+          "title": "Day/Night period"
+        },
+        "temperature": {
+          "description": "Temperature defined in Celsius",
+          "type": "integer",
+          "title": "Temperature"
+        },
+        "lighting": {
+          "properties": {
+            "intensity": {
+              "description": "Light intensity",
+              "type": "integer",
+              "title": "Light intensity"
+            },
+            "composition": {
+              "description": "Light composition",
+              "properties": {
+                "white": {
+                  "type": "integer",
+                  "title": "white"
+                },
+                "D-Red": {
+                  "type": "integer",
+                  "title": "D-Red"
+                },
+                "Far-Red": {
+                  "type": "integer",
+                  "title": "Far-Red"
+                }
+              },
+              "type": "object",
+              "title": "Light composition"
+            }
+          },
+          "type": "object",
+          "title": "Light settings",
+          "description": "Experiment light settings"
+        }
+      },
+      "type": "object",
+      "title": "Growth conditions "
+    },
+    "notes": {
+      "type": "string",
+      "description": "Experiment notes"
+    },
+    "keywords": {
+      "description": "Experiment keywords",
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "title": "Keywords"
+    }
+  }
+}
